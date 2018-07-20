@@ -9,7 +9,7 @@
 
     <bean id="jedisConnFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:use-pool="true"/>
+          p:use-pool="true" p:database="0"/>
 
     <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
     <bean id="valueSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
@@ -19,22 +19,5 @@
           class="org.springframework.data.redis.core.RedisTemplate"
           p:connection-factory-ref="jedisConnFactory" p:keySerializer-ref="keySerializer"
             p:valueSerializer-ref="valueSerializer"/>
-
-
-    <!--Jedis连接池的相关配置-->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <!--新版是maxTotal，旧版是maxActive-->
-        <property name="maxTotal" value="${redis.maxActive}"/>
-        <property name="maxIdle" value="${redis.maxIdle}"/>
-        <property name="testOnBorrow" value="true"/>
-        <property name="testOnReturn" value="true"/>
-    </bean>
-
-    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg name="poolConfig" ref="jedisPoolConfig" />
-        <constructor-arg name="host" value="${redis.host}" />
-        <constructor-arg name="port" value="${redis.port}" type="int" />
-    </bean>
-
 
 </beans>
