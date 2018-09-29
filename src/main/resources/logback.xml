@@ -3,9 +3,9 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!--<filter class="com.logback.example.SampleFilter"/>-->
-        <layout class="ch.qos.logback.classic.PatternLayout">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %c-%L - %msg%n</Pattern>
-        </layout>
+        </encoder>
     </appender>
 
 
