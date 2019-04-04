@@ -18,6 +18,6 @@
     <bean id="redisTemplate"
           class="org.springframework.data.redis.core.RedisTemplate"
           p:connection-factory-ref="jedisConnFactory" p:keySerializer-ref="keySerializer"
-            p:valueSerializer-ref="valueSerializer"/>
+          p:valueSerializer-ref="valueSerializer"/>
 
 </beans>

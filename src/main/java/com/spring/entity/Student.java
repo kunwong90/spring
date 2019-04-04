@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class Student implements Serializable {
 
-    private  int id;
+    private int id;
 
     private String name;
 
