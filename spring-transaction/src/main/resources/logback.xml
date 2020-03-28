@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<filter class="com.logback.example.SampleFilter"/>-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %c-%L - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <logger name="jdbc.audit" level="error"/>
+    <logger name="jdbc.connection" level="error"/>
+    <logger name="jdbc.resultset" level="error"/>
+    <logger name="jdbc.sqlonly" level="error"/>
+    <logger name="jdbc.sqltiming" level="error"/>
+
+
+    <!--以org.springframework开头的日志级别为error-->
+    <logger name="org.springframework" level="warn"/>
+
+
+</configuration>
