@@ -94,4 +94,9 @@ public class IStudentServiceTest {
         paramMap.put("name", "zhangsan");
         studentServiceA.testMap(paramMap);
     }
+
+    @Test
+    public void innerTxTest() {
+        studentServiceA.innerTx(assembleStudent());
+    }
 }

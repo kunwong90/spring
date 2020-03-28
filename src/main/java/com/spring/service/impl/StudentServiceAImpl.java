@@ -21,6 +21,9 @@ public class StudentServiceAImpl {
     @Resource
     private StudentMapper studentMapper;
 
+    @Resource
+    private StudentServiceAImpl self;
+
     @Transactional
     public void insertStudent(Student student, int id) {
         studentMapper.insertStudent(student);
@@ -123,4 +126,17 @@ public class StudentServiceAImpl {
         LOGGER.info("paramMap = " + paramMap);
     }
 
+    /**
+     * 事务生效，数据不会插入，如果没有self事务不生效，数据会插入
+     * @param student
+     */
+    public void innerTx(Student student) {
+        self.insertWithTx(student);
+    }
+
+    @Transactional
+    public void insertWithTx(Student student) {
+        studentMapper.insertStudent(student);
+        throw new RuntimeException();
+    }
 }
